@@ -1,1 +1,1 @@
-Starter code for [Meteor CMS-powered website tutorial](https://github.com/buttercms/meteor-cms-website).
+Finished code for [Building a CMS-powered website with MeteorJS](https://medium.com/@rogerjin12/meteor-cms-website-tutorial-2e8da489f92f).
