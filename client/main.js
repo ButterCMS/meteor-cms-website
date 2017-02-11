@@ -8,21 +8,20 @@ Router.route('/', function() {
 });
 
 // Dynamic pages
-Router.route('/:slug', function() {
+Router.route('/:slug', async function() {
   let slug = this.params.slug;
-  let that = this;
 
-  butter.content.retrieve(['pages[slug='+slug+']']).then(function(resp) {
-    // Get first item in returned collection of pages
-    let page = resp.data.data.pages[0];
+  const resp = await butter.content.retrieve(['pages[slug='+slug+']'])
 
-    SEO.set({
-      title: page.title,
-      meta: {
-        description: page.description
-      }
-    });
+  // Get first item in returned collection of pages
+  let page = resp.data.data.pages[0];
 
-    that.render('Page', {data: {page: page}});
+  SEO.set({
+    title: page.title,
+    meta: {
+      description: page.description
+    }
   });
+
+  this.render('Page', {data: {page: page}});
 });
